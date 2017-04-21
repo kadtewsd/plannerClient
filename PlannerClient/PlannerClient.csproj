@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0DA12175-FA48-4DB7-9510-C2573840B820}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PlannerClient</RootNamespace>
+    <AssemblyName>PlannerClient</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.21.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.21.301221612\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.21.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.21.301221612\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Authentication\ADALAuthenticationRequest.cs" />
+    <Compile Include="Authentication\IAuthenticationRequest.cs" />
+    <Compile Include="Authentication\PlainAuthenticationRequest.cs" />
+    <Compile Include="ClientRequest\AbstractClientRequest.cs" />
+    <Compile Include="ClientRequest\BucketCollectRequest.cs" />
+    <Compile Include="ClientRequest\GroupsCollectionRequest.cs" />
+    <Compile Include="ClientRequest\TaskCollectRequest.cs" />
+    <Compile Include="ClientRequest\TaskCreationRequest.cs" />
+    <Compile Include="ClientRequest\LogOut.cs" />
+    <Compile Include="ClientRequest\PlanCollectionRequest.cs" />
+    <Compile Include="ClientRequest\TaskDeleteRequest.cs" />
+    <Compile Include="ClientRequest\UsersCollectionRequest.cs" />
+    <Compile Include="Forms\IViewData.cs" />
+    <Compile Include="Forms\O365ServiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\O365ServiceForm.Designer.cs">
+      <DependentUpon>O365ServiceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormActions.cs" />
+    <Compile Include="Forms\GridAction\BucketSelectedGridAction.cs" />
+    <Compile Include="Forms\GridAction\AbstractGridAction.cs" />
+    <Compile Include="Forms\GridAction\TaskCreateGridAction.cs" />
+    <Compile Include="Forms\GridAction\TaskDeleteGridAction.cs" />
+    <Compile Include="Forms\GridAction\TaskSelectedGridAction.cs" />
+    <Compile Include="Forms\TaskForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TaskForm.Designer.cs">
+      <DependentUpon>TaskForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AbstractBaseModel.cs" />
+    <Compile Include="Model\AbstractDisplayData.cs" />
+    <Compile Include="Model\AbstractRequestModel.cs" />
+    <Compile Include="Model\AzureADFormatModel.cs" />
+    <Compile Include="Model\Group\GroupDisplayData.cs" />
+    <Compile Include="Model\Plan\BucketModel.cs" />
+    <Compile Include="Model\IDataListModel.cs" />
+    <Compile Include="Model\ITitleValueModel.cs" />
+    <Compile Include="Model\Plan\PlannerDisplayData.cs" />
+    <Compile Include="Model\RequestResultModel.cs" />
+    <Compile Include="Model\Group\GroupModel.cs" />
+    <Compile Include="Model\Plan\PlanModel.cs" />
+    <Compile Include="Model\User\SignInModel.cs" />
+    <Compile Include="Model\Plan\TaskModel.cs" />
+    <Compile Include="Model\User\UserModel.cs" />
+    <Compile Include="Model\User\UserDisplayData.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\AbstractServices.cs" />
+    <Compile Include="Service\GroupsCollectionService.cs" />
+    <Compile Include="Service\IBucketAnsTaskCollectionService.cs" />
+    <Compile Include="Service\IGroupCollectionService.cs" />
+    <Compile Include="Service\ILogOutService.cs" />
+    <Compile Include="Service\IPlanCollectionService.cs" />
+    <Compile Include="Service\IService.cs" />
+    <Compile Include="Service\ITaskCollectionService.cs" />
+    <Compile Include="Service\ITaskCreationService.cs" />
+    <Compile Include="Service\ITaskDeleteService.cs" />
+    <Compile Include="Service\IUserCollectionService.cs" />
+    <Compile Include="Service\LogOutService.cs" />
+    <Compile Include="Service\PlanCollectionService.cs" />
+    <Compile Include="Service\PlannerServiceHelper.cs" />
+    <Compile Include="Service\TaskCollectionService.cs" />
+    <Compile Include="Service\TaskCreationService.cs" />
+    <Compile Include="Service\TaskDeleteService.cs" />
+    <Compile Include="Service\BucketAnsTaskCollectionService.cs" />
+    <Compile Include="Service\UsersCollectionService.cs" />
+    <Compile Include="Util\Form\DropDownCellMapperDto.cs" />
+    <Compile Include="Util\Form\EntityMapper.cs" />
+    <Compile Include="Util\Form\CellMapperDto.cs" />
+    <Compile Include="Util\Form\IFormMapperDto.cs" />
+    <Compile Include="Util\Resolver\UserResolver.cs" />
+    <Compile Include="Util\Resolver\GroupResolver.cs" />
+    <Compile Include="Util\Resolver\IIDResolver.cs" />
+    <EmbeddedResource Include="Forms\O365ServiceForm.resx">
+      <DependentUpon>O365ServiceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TaskForm.resx">
+      <DependentUpon>TaskForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

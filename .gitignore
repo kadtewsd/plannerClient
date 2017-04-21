@@ -1,0 +1,6 @@
+packages
+.vs
+.git
+App.config
+bin
+obj
